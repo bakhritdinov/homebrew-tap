@@ -1,11 +1,11 @@
 cask "log-viewer" do
   version "1.0.1"
-  sha256 "dbf1eb334d0fdf95d20c3a4db102f5906c163033d1a71506767637de5974f811"
+  sha256 "9b3148dfa7dacd53c23dfcb23d56572b609bb0a62672125c36f47b5665c39546"
 
-  url "https://github.com/boburbakhritdinov/log-viewer/releases/download/v#{version}/LogViewer-macOS-Universal.dmg"
+  url "https://github.com/bakhritdinov/log-viewer/releases/download/v#{version}/LogViewer-macOS-Universal.dmg"
   name "LogViewer"
   desc "Reactive Log Viewer for Grafana Loki"
-  homepage "https://github.com/boburbakhritdinov/log-viewer"
+  homepage "https://github.com/bakhritdinov/log-viewer"
 
   app "LogViewer.app"
 
