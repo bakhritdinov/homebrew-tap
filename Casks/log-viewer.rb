@@ -1,6 +1,6 @@
 cask "log-viewer" do
-  version "1.0.1"
-  sha256 "9b3148dfa7dacd53c23dfcb23d56572b609bb0a62672125c36f47b5665c39546"
+  version "2.0.0"
+  sha256 "11fe3e7e1724390707b1263898e72ffcf024ee303563238dbc72a4212e7f713c"
 
   url "https://github.com/bakhritdinov/log-viewer/releases/download/v#{version}/LogViewer-macOS-Universal.dmg"
   name "LogViewer"
