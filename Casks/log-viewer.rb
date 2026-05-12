@@ -1,6 +1,6 @@
 cask "log-viewer" do
-  version "2.2.1"
-  sha256 "4e971214488a6deefc858326640ffef40d289b0db6ec342a9f9e2dc31c1b88cd"
+  version "2.2.2"
+  sha256 "eca9d44a143db19d1704ddcc41b9f7cf028acedcafac96dd418812cb70f68e8f"
 
   url "https://github.com/bakhritdinov/log-viewer/releases/download/v#{version}/LogViewer-macOS-Universal.dmg"
   name "LogViewer"
@@ -9,8 +9,15 @@ cask "log-viewer" do
 
   app "LogViewer.app"
 
+  # `uninstall delete:` uses `rm -rf` and does not fail if the path is missing,
+  # which lets `brew upgrade --cask log-viewer` proceed when the user has
+  # manually deleted /Applications/LogViewer.app between installs.
+  uninstall quit:   "com.logviewer.LogViewer",
+            delete: "/Applications/LogViewer.app"
+
   zap trash: [
-    "~/Library/Preferences/com.logviewer.plist",
-    "~/Library/Saved Application State/com.logviewer.savedState",
+    "~/Library/Preferences/com.logviewer.LogViewer.plist",
+    "~/Library/Saved Application State/com.logviewer.LogViewer.savedState",
+    "~/Library/Application Support/LogViewer",
   ]
 end
