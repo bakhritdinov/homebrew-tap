@@ -1,6 +1,6 @@
 cask "log-viewer" do
-  version "2.2.5"
-  sha256 "48c3aab6a292519bad67489e5cc4b7bcf1f3f8292373f0cc777a522f92f3a11d"
+  version "2.2.6"
+  sha256 "697bebf8c0e41b989324cf75c8ba7508b78282925e6ab19a91248d485e5d941b"
 
   url "https://github.com/bakhritdinov/log-viewer/releases/download/v#{version}/LogViewer-macOS-Universal.dmg"
   name "LogViewer"
@@ -9,11 +9,11 @@ cask "log-viewer" do
 
   app "LogViewer.app"
 
-  # `uninstall delete:` uses `rm -rf` and does not fail if the path is missing,
-  # which lets `brew upgrade --cask log-viewer` proceed when the user has
-  # manually deleted /Applications/LogViewer.app between installs.
-  uninstall quit:   "com.logviewer.LogViewer",
-            delete: "/Applications/LogViewer.app"
+  # `delete:` is intentionally NOT set to /Applications/LogViewer.app -- the
+  # `app` stanza already handles uninstall of that path. Duplicating it causes
+  # Homebrew to attempt removal twice during `brew upgrade`, and the second
+  # pass errors with "It seems the App source ... is not there." (#19, May 2026)
+  uninstall quit: "com.logviewer.LogViewer"
 
   zap trash: [
     "~/Library/Preferences/com.logviewer.LogViewer.plist",
